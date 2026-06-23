@@ -71,6 +71,12 @@
 /* Google Fonts — Inter */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
+/* Animations */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
 /* Base styles */
 body {
   font-family: var(--font-sans);
