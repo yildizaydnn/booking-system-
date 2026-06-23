@@ -228,6 +228,50 @@ Tüm hassas bilgiler (DB şifresi, JWT secret, SMTP credentials) `.env` dosyası
 
 ---
 
+## Rol & Sayfa Yapısı
+
+Bu uygulama bir **backoffice paneli**dir. Müşteriler (CUSTOMER) bu panele erişmez; randevularını ileride oluşturulacak herkese açık bir sayfa üzerinden alırlar (örn: `slotify.com/berber-ahmet`).
+
+**Panele erişen roller:**
+
+| Rol | Açıklama |
+|-----|----------|
+| `SUPER_ADMIN` | Platform yöneticisi. Tüm işletmeleri ve kullanıcıları görür/yönetir |
+| `BUSINESS_OWNER` | İşletme sahibi. Yalnızca kendi işletmesine ait veriyi görür |
+
+**SUPER_ADMIN Sayfaları:**
+
+| Sayfa | Açıklama |
+|-------|----------|
+| Dashboard | Platform geneli istatistikler (toplam işletme, toplam randevu) |
+| İşletmeler | Tüm işletmeleri listeleme, onaylama, askıya alma |
+| Kullanıcılar | Tüm kullanıcıları yönetme, rol değiştirme, silme |
+| İstatistikler | Platform geneli raporlama |
+
+**BUSINESS_OWNER Sayfaları:**
+
+| Sayfa | Açıklama |
+|-------|----------|
+| Dashboard | Bugünkü randevular, haftalık özet |
+| Randevular | Takvim/liste görünümü, yeni randevu oluştur, iptal et |
+| Hizmetler | Hizmet ekle/düzenle (ad, süre, fiyat) |
+| Çalışma Saatleri | Hangi gün kaçtan kaça açık |
+| İşletme Bilgileri | İşletme adı, adres, iletişim düzenle |
+
+**Sidebar Yapısı:**
+
+```
+BUSINESS_OWNER            SUPER_ADMIN
+─────────────             ─────────────
+Dashboard                 Dashboard
+Randevular                İşletmeler
+Hizmetler                 Kullanıcılar
+Çalışma Saatleri          İstatistikler
+İşletme Bilgileri
+```
+
+---
+
 ## Güvenlik
 
 - **Kimlik Doğrulama:** JWT (access token kısa ömürlü, refresh token ile yenileme)
