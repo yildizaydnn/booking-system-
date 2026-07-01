@@ -2,14 +2,14 @@ import { create } from 'zustand';
 import { authService } from '../api';
 
 const useAuthStore = create((set) => ({
-  // State — veriler
+  
   user: null,
   token: localStorage.getItem('access_token') || null,
   isAuthenticated: !!localStorage.getItem('access_token'),
   loading: false,
   error: null,
 
-  // Actions — state'i değiştiren fonksiyonlar
+ 
   login: async (credentials) => {
     set({ loading: true, error: null });
     try {
